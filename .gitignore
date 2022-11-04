@@ -1,6 +1,2 @@
-node_modules/
-platforms/
-plugins/
-package-lock.json
-yarn.lock
-Podfile.lock
+www/js/APIKeys.js
+package.json

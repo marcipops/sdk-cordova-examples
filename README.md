@@ -1,29 +1,46 @@
+# IndoorAtlas & Cordova example: Leaflet and Mapbox
 
-# IndoorAtlas Cordova and React.Native Plugin Examples
+## Building and running
 
-[IndoorAtlas](https://www.indooratlas.com/) provides a unique Platform-as-a-Service (PaaS) solution that runs a disruptive geomagnetic positioning in its full-stack hybrid technology for accurately pinpointing a location inside a building. The IndoorAtlas SDK enables app developers to use high-accuracy indoor positioning in venues that have been fingerprinted.
+Clone the git repository:
 
-This repository provides examples for IndoorAtlas Cordova and React.Native Plugin.
+```
+git clone https://github.com/IndoorAtlas/sdk-cordova-examples
+cd sdk-cordova-examples/LeafletExample
+```
 
-Getting started requires you to set up a free developer account and fingerprint your indoor venue using the [IndoorAtlas MapCreator 2](https://play.google.com/store/apps/details?id=com.indooratlas.android.apps.jaywalker).
-See [IndoorAtlas developer documentation](https://docs.indooratlas.com)
-for futher instructions. The full API documentation for the Cordova and React.Native plugin
-is available at https://docs.indooratlas.com/cordova/latest/
+Set your API keys in `www/js/APIKeys.js`. API keys can be generated at https://app.indooratlas.com/apps.
+Get a Mapbox access token from https://mapbox.com.
+It is also possible to run this example without a Mabox access token, in which
+case no outdoor map is shown under the floor plan images.
 
-## Select an example
+### Android
 
-### Cordova
+Add Android platform
+```
+cordova platform add android@^11.0.0
+```
+Build the project and run it
+```
+cordova build
+cordova run
+```
 
-This repository contains one Cordova example: [Leaflet example with optional Mapbox maps ](https://github.com/IndoorAtlas/sdk-cordova-examples/blob/master/LeafletExample/README.md).
-It demonstrates the use of IndoorAtlas positioning and wayfinding, and geofence monitoring.
+### iOS
 
-In addition, the [Snippets folder](https://github.com/IndoorAtlas/sdk-cordova-examples/blob/master/Snippets) contains partial code examples demonstrating the basics of the plugin.
+Add iOS platform
+```
+cordova platform add ios@^6.2.0
+```
+Open project in XCode
+```
+open platforms/ios/IACordova.xcworkspace
+```
+and build using XCode.
 
-### React.Native
+## Wayfinding
 
-This repository also contains a [React.Native example](https://github.com/IndoorAtlas/sdk-cordova-examples/blob/master/ReactNativeExample/README.md).
-It demonstrates the use of IndoorAtlas positioning and displaying a blue dot on a map.
+Before using wayfinding part of the example, you need to [create a wayfinding graph](https://docs.indooratlas.com/manage/wayfinding/) on https://app.indooratlas.com.
 
-## License
-
-Copyright 2015-2021 IndoorAtlas Ltd. The Cordova and React.Native Plugins are released under the Apache License. See the [LICENSE.md](https://github.com/IndoorAtlas/sdk-cordova-examples/blob/master/LICENSE) file for details.
+You can select a destination by pressing the screen. The route is updated to start from the
+current location of you whenever a new location is obtained from the IndoorAtlas platform.
